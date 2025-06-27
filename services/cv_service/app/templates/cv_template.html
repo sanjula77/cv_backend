@@ -1,168 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ cv.name }} - CV</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ cv.name }} - CV</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      width: 100%;
-      height: 100vh;
-    }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
 
-    .sidebar {
-      width: 30%;
-      background-color: #1e293b;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      .sidebar {
+        width: 30%;
+        background-color: #1e293b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .sidebar img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
+      .sidebar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
 
-    .sidebar h1 {
-      font-size: 20px;
-      text-align: center;
-    }
+      .sidebar h1 {
+        font-size: 20px;
+        text-align: center;
+      }
 
-    .sidebar p {
-      font-size: 14px;
-      color: #cbd5e1;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+      .sidebar p {
+        font-size: 14px;
+        color: #cbd5e1;
+        text-align: center;
+        margin-bottom: 10px;
+      }
 
-    .sidebar h2 {
-      margin-top: 20px;
-      font-size: 16px;
-      border-bottom: 1px solid #475569;
-      width: 100%;
-      padding-bottom: 4px;
-    }
+      .sidebar h2 {
+        margin-top: 20px;
+        font-size: 16px;
+        border-bottom: 1px solid #475569;
+        width: 100%;
+        padding-bottom: 4px;
+      }
 
-    .sidebar ul {
-      margin-top: 10px;
-      list-style: none;
-      padding-left: 0;
-      font-size: 13px;
-    }
+      .sidebar ul {
+        margin-top: 10px;
+        list-style: none;
+        padding-left: 0;
+        font-size: 13px;
+      }
 
-    .sidebar li {
-      margin-bottom: 5px;
-    }
+      .sidebar li {
+        margin-bottom: 5px;
+      }
 
-    .main {
-      width: 70%;
-      padding: 30px;
-    }
+      .main {
+        width: 70%;
+        padding: 30px;
+      }
 
-    .main h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 4px;
-    }
+      .main h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 4px;
+      }
 
-    .section {
-      margin-bottom: 25px;
-      page-break-inside: avoid;
-    }
+      .section {
+        margin-bottom: 25px;
+        page-break-inside: avoid;
+      }
 
-    .main p {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
+      .main p {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
 
-    .main ul {
-      margin-top: 5px;
-      margin-left: 20px;
-      font-size: 14px;
-    }
+      .main ul {
+        margin-top: 5px;
+        margin-left: 20px;
+        font-size: 14px;
+      }
 
-    .main li {
-      margin-bottom: 4px;
-    }
-  </style>
-</head>
-<body>
-<div class="sidebar">
-  {% if cv.image_url %}
-    <img src="{{ cv.image_url }}" alt="Profile Photo" />
-  {% else %}
-    <img src="static/profile.jpg" alt="Profile Photo" />
-  {% endif %}
+      .main li {
+        margin-bottom: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      {% if cv.image_url %}
+      <img src="{{ cv.image_url }}" alt="Profile Photo" />
+      {% else %}
+      <img src="static/profile.jpg" alt="Profile Photo" />
+      {% endif %}
 
-  <h1>{{ cv.name }}</h1>
-  <p>{{ cv.title }}</p>
+      <h1>{{ cv.name }}</h1>
+      <p>{{ cv.title }}</p>
 
-  <h2>Contact</h2>
-  <p>{{ cv.phone }}</p>
-  <p>{{ cv.email }}</p>
-  <p>{{ cv.address }}</p>
+      <h2>Contact</h2>
+      <p>{{ cv.phone }}</p>
+      <p>{{ cv.email }}</p>
+      <p>{{ cv.address }}</p>
 
-  <h2>Skills</h2>
-  <ul>
-    {% for skill in cv.skills %}
-      <li>{{ skill }}</li>
-    {% endfor %}
-  </ul>
-
-  <h2>Languages</h2>
-  <ul>
-    {% for lang in cv.languages %}
-      <li>{{ lang }}</li>
-    {% endfor %}
-  </ul>
-
-  <h2>Hobbies</h2>
-  <ul>
-    {% for hobby in cv.hobbies %}
-      <li>{{ hobby }}</li>
-    {% endfor %}
-  </ul>
-</div>
-
-  <div class="main">
-    <div class="section">
-      <h2>Profile</h2>
-      <p>{{ cv.profile }}</p>
-    </div>
-
-    <div class="section">
-      <h2>Work Experience</h2>
-      {% for job in cv.experience %}
-      <p><strong>{{ job.title }}</strong> – {{ job.company }} ({{ job.duration }})</p>
+      <h2>Skills</h2>
       <ul>
-        {% for detail in job.details %}
-        <li>{{ detail }}</li>
+        {% for skill in cv.skills %}
+        <li>{{ skill }}</li>
         {% endfor %}
       </ul>
-      {% endfor %}
+
+      <h2>Languages</h2>
+      <ul>
+        {% for lang in cv.languages %}
+        <li>{{ lang }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2>Hobbies</h2>
+      <ul>
+        {% for hobby in cv.hobbies %}
+        <li>{{ hobby }}</li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <div class="section">
-      <h2>Education</h2>
-      {% for edu in cv.education %}
-      <p><strong>{{ edu.degree }}</strong></p>
-      <p>{{ edu.duration }}</p>
-      <p>{{ edu.institution }}</p>
-      {% endfor %}
+    <div class="main">
+      <div class="section">
+        <h2>Profile</h2>
+        <p>{{ cv.profile }}</p>
+      </div>
+
+      <div class="section">
+        <h2>Work Experience</h2>
+        {% for job in cv.experience %}
+        <p>
+          <strong>{{ job.title }}</strong> – {{ job.company }} ({{ job.duration
+          }})
+        </p>
+        <ul>
+          {% for detail in job.details %}
+          <li>{{ detail }}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+
+      <div class="section">
+        <h2>Education</h2>
+        {% for edu in cv.education %}
+        <p><strong>{{ edu.degree }}</strong></p>
+        <p>{{ edu.duration }}</p>
+        <p>{{ edu.institution }}</p>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
