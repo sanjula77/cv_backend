@@ -1,0 +1,6 @@
+version: '3'
+services:
+  cv-service:
+    build: ./services/cv_service
+    ports:
+      - "8001:8000"
