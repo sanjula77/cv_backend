@@ -9,6 +9,11 @@ def generate_pdf(data: CVData):
     html_content = template.render(cv=data)
 
     output_path = f"app/static/{data.name.replace(' ', '_')}_cv.pdf"
-    pdfkit.from_string(html_content, output_path)
+
+    # Manually set path to wkhtmltopdf.exe
+    config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+
+    # Generate the PDF
+    pdfkit.from_string(html_content, output_path, configuration=config)
 
     return output_path
